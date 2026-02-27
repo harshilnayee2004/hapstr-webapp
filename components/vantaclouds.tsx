@@ -35,6 +35,14 @@ export default function VantaClouds() {
           speed: 1.0,
         })
 
+        // Ensure Vanta always stays behind everything, particularly on mobile sizing overrides
+        if (vantaRef.current.children[0]) {
+          const canvas = vantaRef.current.children[0] as HTMLCanvasElement;
+          canvas.style.position = 'absolute';
+          canvas.style.zIndex = '-999';
+          canvas.style.pointerEvents = 'none';
+        }
+
         effectRef.current = vantaEffect
       }
     }
