@@ -222,6 +222,19 @@ body {
     align-items: center;
   }
 
+  /* Add a glowing white drop shadow on mobile to ensure the text 
+     doesn't blend into the dense black lines of the smaller vanta globe */
+  .hero-h1 {
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 1),
+      0px 0px 16px rgba(255, 255, 255, 1),
+      0px 0px 24px rgba(255, 255, 255, 1) !important;
+  }
+
+  .hero-sub {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1),
+      0px 0px 12px rgba(255, 255, 255, 1) !important;
+  }
+
   .hero-btns {
     justify-content: center;
     width: 100%;
@@ -663,6 +676,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  .vanta-canvas {
+    transform: scale(2.0) translateY(-10%);
+    transform-origin: center top;
+  }
+
   .lm-hero {
     padding: 6rem 1.5rem 4rem;
     min-height: auto;
