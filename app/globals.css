@@ -676,9 +676,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .vanta-canvas {
-    transform: scale(2.0) translateY(-10%);
-    transform-origin: center top;
+  .lm-hero canvas.vanta-canvas {
+    transform: scale(2.5);
+    transform-origin: center bottom;
   }
 
   .lm-hero {
