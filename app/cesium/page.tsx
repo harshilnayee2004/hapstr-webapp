@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export default function CesiumPage() {
   // when this page loads we make sure the dev server is running and then
