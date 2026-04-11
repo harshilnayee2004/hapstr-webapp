@@ -1,12 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import VantaBG from "@/components/VantaBG";
-import CardNav from "@/components/CardNav";
+import CardNav, { CardNavItem, CardNavHandle } from "@/components/CardNav";
 import BlurText from "@/components/BlurText";
 import Link from "next/link";
-
 export default function Home() {
+  const cardNavRef = useRef<CardNavHandle>(null);
+  const navItems: CardNavItem[] = [
+    {
+      label: "3D Exploration",
+      bgImage: "/earth.png",
+      links: [
+        // navigate to the special /cesium route which fires up the
+        // cesium-building app and then redirects the user
+        { label: "Overview", href: "/cesium", ariaLabel: "Overview" },
+
+      ],
+    },
+    {
+      label: "Live Open Homes",
+      bgImage: "/images/resources.jpg",
+      links: [
+        { label: "Docs", href: "#", ariaLabel: "Documentation" },
+        { label: "Tutorials", href: "#", ariaLabel: "Tutorials" },
+      ],
+    },
+    {
+      label: "Smart Insights",
+      bgImage: "/images/company.jpg",
+      links: [
+        { label: "About", href: "#", ariaLabel: "About us" },
+        { label: "Careers", href: "#", ariaLabel: "Careers" },
+      ],
+    },
+  ];
+
   return (
     <>
       {/* ── Vanta background ── */}
@@ -23,7 +52,14 @@ export default function Home() {
 
         {/* ── Nav ── */}
         <div className="nav-wrapper">
-          <CardNav />
+          <CardNav
+            ref={cardNavRef}
+            logo="/vercel.svg"
+            logoAlt="Logo"
+            brandName="Triayam"
+            ctaLabel="Get Started"
+            items={navItems}
+          />
         </div>
 
         {/* ── Hero ── */}
@@ -45,7 +81,10 @@ export default function Home() {
             />
 
             <div className="hero-btns">
-              <button className="btn-primary">
+              <button
+                className="btn-primary"
+                onClick={() => cardNavRef.current?.openNav()}
+              >
                 Request a Demo
               </button>
               <Link href="/learn-more" className="btn-ghost">Learn More</Link>
