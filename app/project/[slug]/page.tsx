@@ -1,6 +1,8 @@
 import BuildingViewer from "@/components/BuildingViewer";
 import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
+import fs from "fs";
+import path from "path";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -10,18 +12,22 @@ export default async function ProjectPage({ params }: PageProps) {
   // Await the params to support Next.js 15/16 App Router requirements
   const resolvedParams = await params;
   const rawSlug = resolvedParams.slug;
-  
+
   // Convert slug back into a title case project name
   const projectName = rawSlug
     .replace(/-/g, " ")
     .replace(/\b\w/g, (char) => char.toUpperCase());
 
+  // Check if model.obj actually exists structurally on the server
+  const modelPath = path.join(process.cwd(), "public", "model.obj");
+  const modelExists = fs.existsSync(modelPath);
+
   return (
-    <main className="relative w-full h-[100dvh] overflow-hidden bg-[#1a1a2e]">
+    <main className="relative w-full h-[100dvh] overflow-hidden bg-[#0f0f0f]">
       {/* Back button */}
       <div className="absolute top-6 right-6 z-20">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="text-white/60 hover:text-white transition-colors text-sm bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10"
         >
           Close Viewer
@@ -30,7 +36,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
       {/* R3F BuildingViewer full screen */}
       <div className="absolute inset-0 z-0">
-        <BuildingViewer />
+        <BuildingViewer modelExists={modelExists} />
       </div>
 
       {/* Top Left Project Title Overlay */}
@@ -46,14 +52,14 @@ export default async function ProjectPage({ params }: PageProps) {
       {/* Fixed Bottom Bar */}
       <div className="absolute bottom-0 left-0 w-full z-10">
         <div className="w-full bg-[#0a0a0a]/60 backdrop-blur-lg border-t border-white/10 px-6 py-4 flex flex-row items-center justify-between md:justify-center md:gap-12 pb-safe">
-          
+
           <div className="hidden md:block">
             <h3 className="text-white font-medium text-lg">Interested in {projectName}?</h3>
             <p className="text-white/60 text-sm">Secure your spot before construction begins.</p>
           </div>
 
           <a
-            href="https://wa.me/91XXXXXXXXXX"
+            href="https://wa.me/917359273379"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebd59] text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 active:scale-95 shadow-[0_4px_14px_rgba(37,211,102,0.4)] pointer-events-auto"

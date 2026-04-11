@@ -9,29 +9,10 @@ export default function Home() {
   const cardNavRef = useRef<CardNavHandle>(null);
   const navItems: CardNavItem[] = [
     {
-      label: "3D Exploration",
-      bgImage: "/earth.png",
+      label: 'How it works',
+      bgImage: '/earth.png',
       links: [
-        // navigate to the special /cesium route which fires up the
-        // cesium-building app and then redirects the user
-        { label: "Overview", href: "/cesium", ariaLabel: "Overview" },
-
-      ],
-    },
-    {
-      label: "Live Open Homes",
-      bgImage: "/images/resources.jpg",
-      links: [
-        { label: "Docs", href: "#", ariaLabel: "Documentation" },
-        { label: "Tutorials", href: "#", ariaLabel: "Tutorials" },
-      ],
-    },
-    {
-      label: "Smart Insights",
-      bgImage: "/images/company.jpg",
-      links: [
-        { label: "About", href: "#", ariaLabel: "About us" },
-        { label: "Careers", href: "#", ariaLabel: "Careers" },
+        { label: 'For Builders', href: '/learn-more', ariaLabel: 'For Builders' },
       ],
     },
   ];
@@ -57,7 +38,8 @@ export default function Home() {
             logo="/vercel.svg"
             logoAlt="Logo"
             brandName="Triayam"
-            ctaLabel="Get Started"
+            ctaLabel="Request a Demo"
+            onCtaClick={() => window.open('https://wa.me/917359273379', '_blank')}
             items={navItems}
           />
         </div>
@@ -80,14 +62,15 @@ export default function Home() {
               className="hero-sub"
             />
 
-            <div className="hero-btns">
+            <div className="hero-btns flex flex-wrap gap-4 items-center justify-center">
               <button
                 className="btn-primary"
-                onClick={() => cardNavRef.current?.openNav()}
+                onClick={() => window.open('https://wa.me/917359273379', '_blank')}
               >
                 Request a Demo
               </button>
-              <Link href="/learn-more" className="btn-ghost">Learn More</Link>
+              <Link href="/showcase" className="btn-ghost">View Projects</Link>
+              <Link href="/learn-more" className="btn-ghost" style={{ opacity: 0.8 }}>Learn More</Link>
             </div>
 
           </div>

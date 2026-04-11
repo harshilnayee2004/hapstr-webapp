@@ -16,12 +16,20 @@ function Model() {
   return <primitive object={obj} />;
 }
 
-export default function BuildingViewer() {
+export default function BuildingViewer({ modelExists = true }: { modelExists?: boolean }) {
+  if (!modelExists) {
+    return (
+      <div style={{ width: "100%", height: "100vh", backgroundColor: "#0f0f0f", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <h2 style={{ color: "white", fontFamily: "sans-serif" }}>Building model loading soon</h2>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ width: "100%", height: "100vh", backgroundColor: "#1a1a2e" }}>
+    <div style={{ width: "100%", height: "100vh", backgroundColor: "#0f0f0f" }}>
       <Canvas camera={{ position: [15, 15, 15], fov: 45 }}>
         {/* Sets the scene background color */}
-        <color attach="background" args={["#1a1a2e"]} />
+        <color attach="background" args={["#0f0f0f"]} />
 
         {/* Add ambient and directional lighting */}
         <ambientLight intensity={0.7} />
