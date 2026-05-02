@@ -8,7 +8,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 
 const showcaseProjects = [
-  { name: 'Sunset Residency', slug: 'sunset-residency' },
+  { name: 'Sunset Residency', slug: 'sunset-residency', url: 'https://plaza.bizzlogic.com/en/streaming-demo' },
   { name: 'Green Valley Villas', slug: 'green-valley-villas' },
   { name: 'Metro Heights', slug: 'metro-heights' },
   { name: 'Riverside Apartments', slug: 'riverside-apartments' },
@@ -124,7 +124,8 @@ export default function Home() {
                   </div>
                   
                   <Link
-                    href={`/project/${project.slug}`}
+                    href={project.url || `/project/${project.slug}`}
+                    {...(project.url ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="w-full py-3 px-4 bg-white/10 hover:bg-white text-white hover:text-black font-semibold rounded-xl text-center tracking-tight transition-all active:scale-[0.98] border border-white/10 hover:border-white"
                   >
                     View in 3D
