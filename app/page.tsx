@@ -8,12 +8,12 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 
 const showcaseProjects = [
-  { name: 'Sunset Residency', slug: 'sunset-residency', url: 'https://plaza.bizzlogic.com/en/streaming-demo' },
-  { name: 'Green Valley Villas', slug: 'green-valley-villas' },
-  { name: 'Metro Heights', slug: 'metro-heights' },
-  { name: 'Riverside Apartments', slug: 'riverside-apartments' },
-  { name: 'Sky Towers', slug: 'sky-towers' },
-  { name: 'Heritage Bungalows', slug: 'heritage-bungalows' },
+  { name: 'Sunset Residency', slug: 'sunset-residency', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Sunset Residency.png' },
+  { name: 'Green Valley Villas', slug: 'green-valley-villas', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Green Valley Villas.png' },
+  { name: 'Metro Heights', slug: 'metro-heights', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Metro Heights.png' },
+  { name: 'Riverside Apartments', slug: 'riverside-apartments', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Riverside Apartments.png' },
+  { name: 'Sky Towers', slug: 'sky-towers', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Sky Towers.png' },
+  { name: 'Heritage Bungalows', slug: 'heritage-bungalows', url: 'https://plaza.bizzlogic.com/en/streaming-demo', image: '/images/Heritage Bungalows.png' },
 ];
 
 export default function Home() {
@@ -103,16 +103,16 @@ export default function Home() {
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pt-8">
             {showcaseProjects.map((project) => (
-              <div 
+              <div
                 key={project.slug}
                 className="flex flex-col bg-[#0f0f0f] border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-300 group hover:-translate-y-1 shadow-2xl shadow-black/50"
               >
-                {/* Image Placeholder */}
-                <div className="w-full h-56 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] relative p-4 flex items-center justify-center border-b border-white/5">
-                  <svg className="w-16 h-16 text-white/5 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
+                <div
+                  className="w-full h-56 bg-cover bg-center relative overflow-hidden border-b border-white/5"
+                  style={{
+                    backgroundImage: `url(${encodeURI(project.image)})`,
+                  }}
+                />
 
                 {/* Card Body */}
                 <div className="p-6 flex flex-col gap-6 flex-1 justify-between bg-gradient-to-b from-[#0f0f0f] to-[#050505]">
@@ -122,7 +122,7 @@ export default function Home() {
                     </span>
                     <h3 className="text-2xl font-semibold text-white/90 group-hover:text-white transition-colors">{project.name}</h3>
                   </div>
-                  
+
                   <Link
                     href={project.url || `/project/${project.slug}`}
                     {...(project.url ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -135,7 +135,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        
+
         {/* Footer appended dynamically since Vanta runs absolute block natively */}
         <div className="mt-20 border-t border-white/10 pt-10">
           <Footer />
